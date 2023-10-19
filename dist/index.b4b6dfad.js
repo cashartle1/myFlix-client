@@ -27242,7 +27242,7 @@ const MainView = ()=>{
                 birth: "09-22-1937",
                 death: "09-04-1987"
             },
-            imagePath: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/jQYlydvHm3kUix1f8prMucrplhm.jpg",
+            imageURL: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/jQYlydvHm3kUix1f8prMucrplhm.jpg",
             releaseYear: "1983",
             actors: [
                 "Mark Hamill",
@@ -27293,7 +27293,7 @@ const MainView = ()=>{
         columnNumber: 9
     }, undefined);
 };
-_s(MainView, "l7YrwjVQjm6kQMJ4hCnboX4gV3U=");
+_s(MainView, "8pGGkiv4vjrpEPWaLCP5EjR6PEk=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");

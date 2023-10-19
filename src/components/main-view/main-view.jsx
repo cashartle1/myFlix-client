@@ -53,7 +53,7 @@ export const MainView = () => {
                 birth: "09-22-1937",
                 death: "09-04-1987"
             },
-            imagePath: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/jQYlydvHm3kUix1f8prMucrplhm.jpg",
+            imageURL: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/jQYlydvHm3kUix1f8prMucrplhm.jpg",
             releaseYear: "1983",
             actors: ["Mark Hamill", "Harrison Ford", "Carrie Fisher", "Billy Dee Williams", "Anthony Daniels", "Peter Mayhew", "Ian McDiarmid", "Frank Oz", "James Earl Jones", " David Prowse", "alec Guinness", "Kenny Baker"],
         },
