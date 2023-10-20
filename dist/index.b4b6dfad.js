@@ -27184,8 +27184,12 @@ const MainView = ()=>{
                     id: movie.key,
                     title: movie.title,
                     description: movie.description,
-                    genre: movie.genre.name,
-                    director: movie.director.name,
+                    genre: {
+                        name: movie.genre.name
+                    },
+                    director: {
+                        name: movie.director.name
+                    },
                     imageURL: movie.imageURL,
                     releaseYear: movie.ReleaseYear
                 };
@@ -27198,14 +27202,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 32,
+        lineNumber: 36,
         columnNumber: 13
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 37,
+        lineNumber: 41,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27216,12 +27220,12 @@ const MainView = ()=>{
                 }
             }, movie.title, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 43,
+                lineNumber: 47,
                 columnNumber: 17
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 41,
+        lineNumber: 45,
         columnNumber: 9
     }, undefined);
 };
@@ -27266,8 +27270,12 @@ MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
         title: (0, _propTypesDefault.default).string.isRequired,
         description: (0, _propTypesDefault.default).string.isRequired,
-        genre: (0, _propTypesDefault.default).string.isRequired,
-        director: (0, _propTypesDefault.default).string.isRequired,
+        genre: (0, _propTypesDefault.default).shape({
+            name: (0, _propTypesDefault.default).string.isRequired
+        }),
+        director: (0, _propTypesDefault.default).shape({
+            name: (0, _propTypesDefault.default).string.isRequired
+        }),
         imageURL: (0, _propTypesDefault.default).string.isRequired,
         releaseYear: (0, _propTypesDefault.default).string.isRequired
     }).isRequired,
@@ -28356,8 +28364,12 @@ MovieView.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
         title: (0, _propTypesDefault.default).string.isRequired,
         description: (0, _propTypesDefault.default).string.isRequired,
-        genre: (0, _propTypesDefault.default).string.isRequired,
-        director: (0, _propTypesDefault.default).string.isRequired,
+        genre: (0, _propTypesDefault.default).shape({
+            name: (0, _propTypesDefault.default).string.isRequired
+        }),
+        director: (0, _propTypesDefault.default).shape({
+            name: (0, _propTypesDefault.default).string.isRequired
+        }),
         imageURL: (0, _propTypesDefault.default).string.isRequired,
         releaseYear: (0, _propTypesDefault.default).string.isRequired
     }).isRequired,
