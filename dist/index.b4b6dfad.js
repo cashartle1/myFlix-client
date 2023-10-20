@@ -27182,15 +27182,15 @@ const MainView = ()=>{
             const moviesFromApi = data.map((movie)=>{
                 return {
                     id: movie.key,
-                    title: movie.title,
-                    description: movie.description,
+                    title: movie.Title,
+                    description: movie.Description,
                     genre: {
-                        name: movie.genre.name
+                        name: movie.Genre.Name
                     },
                     director: {
-                        name: movie.director.name
+                        name: movie.Director.Name
                     },
-                    imageURL: movie.imageURL,
+                    imagePath: movie.ImagePath,
                     releaseYear: movie.ReleaseYear
                 };
             });
@@ -27218,7 +27218,7 @@ const MainView = ()=>{
                 onMovieClick: (newSelectedMovie)=>{
                     setSelectedMovie(newSelectedMovie);
                 }
-            }, movie.title, false, {
+            }, movie.Title, false, {
                 fileName: "src/components/main-view/main-view.jsx",
                 lineNumber: 47,
                 columnNumber: 17
@@ -27268,16 +27268,16 @@ _c = MovieCard;
 //define all props constraints for MovieCard
 MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
-        title: (0, _propTypesDefault.default).string.isRequired,
-        description: (0, _propTypesDefault.default).string.isRequired,
-        genre: (0, _propTypesDefault.default).shape({
-            name: (0, _propTypesDefault.default).string.isRequired
+        Title: (0, _propTypesDefault.default).string.isRequired,
+        Description: (0, _propTypesDefault.default).string.isRequired,
+        Genre: (0, _propTypesDefault.default).shape({
+            Name: (0, _propTypesDefault.default).string.isRequired
         }),
-        director: (0, _propTypesDefault.default).shape({
-            name: (0, _propTypesDefault.default).string.isRequired
+        Director: (0, _propTypesDefault.default).shape({
+            Name: (0, _propTypesDefault.default).string.isRequired
         }),
-        imageURL: (0, _propTypesDefault.default).string.isRequired,
-        releaseYear: (0, _propTypesDefault.default).string.isRequired
+        ImagePath: (0, _propTypesDefault.default).string.isRequired,
+        ReleaseYear: (0, _propTypesDefault.default).string.isRequired
     }).isRequired,
     onMovieClick: (0, _propTypesDefault.default).func.isRequired
 };
@@ -28362,16 +28362,16 @@ _c = MovieView;
 //define all props constraints for MovieCard
 MovieView.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
-        title: (0, _propTypesDefault.default).string.isRequired,
-        description: (0, _propTypesDefault.default).string.isRequired,
-        genre: (0, _propTypesDefault.default).shape({
-            name: (0, _propTypesDefault.default).string.isRequired
+        Title: (0, _propTypesDefault.default).string.isRequired,
+        Description: (0, _propTypesDefault.default).string.isRequired,
+        Genre: (0, _propTypesDefault.default).shape({
+            Name: (0, _propTypesDefault.default).string.isRequired
         }),
-        director: (0, _propTypesDefault.default).shape({
-            name: (0, _propTypesDefault.default).string.isRequired
+        Director: (0, _propTypesDefault.default).shape({
+            Name: (0, _propTypesDefault.default).string.isRequired
         }),
-        imageURL: (0, _propTypesDefault.default).string.isRequired,
-        releaseYear: (0, _propTypesDefault.default).string.isRequired
+        ImagePath: (0, _propTypesDefault.default).string.isRequired,
+        ReleaseYear: (0, _propTypesDefault.default).string.isRequired
     }).isRequired,
     onBackClick: (0, _propTypesDefault.default).func.isRequired
 };
