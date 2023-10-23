@@ -27177,20 +27177,20 @@ var _signupView = require("../signup-view/signup-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedUser = JSON.parse(localStorge.getItem("user"));
     const storedToken = localStorage.getItem("token");
-    const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
-    const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    const [user, setUser] = (0, _react.useState)(null);
+    const [toke, setToken] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
         if (!token) return;
         fetch("https://movie-flix-f31fbb6efa26.herokuapp.com/movies", {
-            headers: {
+            header: {
                 Authorization: `Bearer ${token}`
             }
-        }).then((response)=>response.json()).then((data)=>{
-            const moviesFromApi = movies.map((data)=>{
+        }).then((response)=>response.json()).then((movies)=>{
+            const moviesFromApi = movies.map((movies)=>{
                 return {
                     id: movies.key,
                     title: movies.Title,
@@ -27213,9 +27213,9 @@ const MainView = ()=>{
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
-                onLoggedIn: (user, token)=>{
+                onLoggedIn: (user, token1)=>{
                     setUser(user);
-                    setToken(token);
+                    setToken(token1);
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
@@ -27309,7 +27309,7 @@ const MainView = ()=>{
         columnNumber: 9
     }, undefined);
 };
-_s(MainView, "9wJBvfUyU2IigbyWC+M5y3EH9h4=");
+_s(MainView, "aySrgrX0c+jd2T4Xq6RqcKjGEmY=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27319,7 +27319,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","@parcel/transformer-js/src/esmodule-helpers.js":"kP3MP","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"frCKW"}],"bwuIu":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","@parcel/transformer-js/src/esmodule-helpers.js":"kP3MP","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"frCKW","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN"}],"bwuIu":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -28486,12 +28486,12 @@ const LoginView = ({ onLoggedIn })=>{
         //to prevent default behavior of form to reload entire page
         event.preventDefault();
         const data = {
-            Username: username,
-            Password: password
+            access: username,
+            secret: password
         };
         fetch("https://movie-flix-f31fbb6efa26.herokuapp.com/login", {
             method: "POST",
-            headers: {
+            header: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data)
@@ -28573,7 +28573,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"kP3MP","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"frCKW"}],"4OGiN":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"kP3MP","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"frCKW","react":"21dqq"}],"4OGiN":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$73d1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -28603,7 +28603,7 @@ const SignupView = ()=>{
         fetch("https://movie-flix-f31fbb6efa26.herokuapp.com/users", {
             method: "POST",
             body: JSON.stringify(data),
-            headers: {
+            header: {
                 "Content-Type": "application/json"
             }
         }).then((response)=>{
@@ -28718,6 +28718,6 @@ $RefreshReg$(_c, "SignupView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"kP3MP","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"frCKW"}],"lJZlQ":[function() {},{}]},["b8bBU","ljLzy","d8Dch"], "d8Dch", "parcelRequire028f")
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"kP3MP","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"frCKW","react":"21dqq"}],"lJZlQ":[function() {},{}]},["b8bBU","ljLzy","d8Dch"], "d8Dch", "parcelRequire028f")
 
-//# sourceMappingURL=index.b4b6dfad.js.map
+//# sourceMappingURL=index.js.map
