@@ -1,30 +1,30 @@
 import PropTypes from 'prop-types';
 
-export const MovieView = ({ movie, onBackClick }) => {
+export const MovieView = ({ movies, onBackClick }) => {
     return (
         <div>
             <div>
-                <img src={movie.imageURL} />
+                <img src={movies.ImagePath} className='movies-img' />
             </div>
             <div>
                 <span>Title: </span>
-                <span>{movie.title}</span>
+                <span>{movies.title}</span>
             </div>
             <div>
                 <span>Description: </span>
-                <span>{movie.description}</span>
+                <span>{movies.description}</span>
             </div>
             <div>
                 <span>Genre: </span>
-                <span>{movie.genre.name}</span>
+                <span>{movies.genre.name}</span>
             </div>
             <div>
                 <span>Director: </span>
-                <span>{movie.director.name}</span>
+                <span>{movies.director.name}</span>
             </div>
             <div>
                 <span>Release Year: </span>
-                <span>{movie.releaseYear}</span>
+                <span>{movies.releaseYear}</span>
             </div>
             <button onClick={onBackClick}>Back</button>
         </div>
@@ -33,7 +33,8 @@ export const MovieView = ({ movie, onBackClick }) => {
 
 //define all props constraints for MovieCard
 MovieView.propTypes = {
-    movie: PropTypes.shape({
+    movies: PropTypes.shape({
+        ImagePath: PropTypes.string.isRequired,
         Title: PropTypes.string.isRequired,
         Description: PropTypes.string.isRequired,
         Genre: PropTypes.shape({
@@ -42,7 +43,6 @@ MovieView.propTypes = {
         Director: PropTypes.shape({
             Name: PropTypes.string.isRequired
         }),
-        ImagePath: PropTypes.string.isRequired,
         ReleaseYear: PropTypes.string.isRequired
     }).isRequired,
     onBackClick: PropTypes.func.isRequired
