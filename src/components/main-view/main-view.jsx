@@ -11,19 +11,19 @@ export const MainView = () => {
         fetch("https://movie-flix-f31fbb6efa26.herokuapp.com/movies")
             .then((response) => response.json())
             .then((data) => {
-                const moviesFromApi = data.map((movie) => {
+                const moviesFromApi = data.map((movies) => {
                     return {
-                        id: movie.key,
-                        title: movie.Title,
-                        description: movie.Description,
+                        id: movies.key,
+                        title: movies.Title,
+                        description: movies.Description,
                         genre: {
-                            name: movie.Genre.Name
+                            name: movies.Genre.Name
                         },
                         director: {
-                            name: movie.Director.Name
+                            name: movies.Director.Name
                         },
-                        imagePath: movie.ImagePath,
-                        releaseYear: movie.ReleaseYear
+                        ImagePath: movies.ImagePath,
+                        releaseYear: movies.ReleaseYear
                     };
                 });
 
@@ -33,7 +33,7 @@ export const MainView = () => {
 
     if (selectedMovie) {
         return (
-            <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+            <MovieView movies={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
         );
     }
 
@@ -43,10 +43,10 @@ export const MainView = () => {
 
     return (
         <div>
-            {movies.map((movie) => (
+            {movies.map((movies) => (
                 <MovieCard
-                    key={movie.Title}
-                    movie={movie}
+                    key={movies.Title}
+                    movies={movies}
                     onMovieClick={(newSelectedMovie) => {
                         setSelectedMovie(newSelectedMovie);
                     }}
