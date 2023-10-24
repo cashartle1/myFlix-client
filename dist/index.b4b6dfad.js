@@ -27190,16 +27190,16 @@ const MainView = ()=>{
                 Authorization: `Bearer ${token}`
             }
         }).then((response)=>response.json()).then((data)=>{
-            const moviesFromApi = movies.map((data)=>{
+            const moviesFromApi = data.map((movies)=>{
                 return {
-                    id: movies.key,
-                    title: movies.Title,
-                    description: movies.Description,
-                    genre: {
-                        name: movies.Genre.Name
+                    id: movies.id,
+                    Title: movies.Title,
+                    Description: movies.Description,
+                    Genre: {
+                        Name: movies.Genre.Name
                     },
-                    director: {
-                        name: movies.Director.Name
+                    Director: {
+                        Name: movies.Director.Name
                     },
                     ImagePath: movies.ImagePath,
                     releaseYear: movies.ReleaseYear
@@ -27337,7 +27337,7 @@ const MovieCard = ({ movies, onMovieClick })=>{
         onClick: ()=>{
             onMovieClick(movies);
         },
-        children: movies.title
+        children: movies.Title
     }, void 0, false, {
         fileName: "src/components/movie-card/movie-card.jsx",
         lineNumber: 5,
@@ -27357,7 +27357,7 @@ MovieCard.propTypes = {
         Director: (0, _propTypesDefault.default).shape({
             Name: (0, _propTypesDefault.default).string.isRequired
         }),
-        ReleaseYear: (0, _propTypesDefault.default).string.isRequired
+        ReleaseYear: (0, _propTypesDefault.default).string
     }).isRequired,
     onMovieClick: (0, _propTypesDefault.default).func.isRequired
 };
@@ -28302,8 +28302,7 @@ const MovieView = ({ movies, onBackClick })=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: movies.ImagePath,
-                    className: "movies-img"
+                    src: movies.ImagePath
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
                     lineNumber: 7,
@@ -28324,7 +28323,7 @@ const MovieView = ({ movies, onBackClick })=>{
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movies.title
+                        children: movies.Title
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 11,
@@ -28346,7 +28345,7 @@ const MovieView = ({ movies, onBackClick })=>{
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movies.description
+                        children: movies.Description
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 15,
@@ -28368,7 +28367,7 @@ const MovieView = ({ movies, onBackClick })=>{
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movies.genre.name
+                        children: movies.Genre.Name
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 19,
@@ -28390,7 +28389,7 @@ const MovieView = ({ movies, onBackClick })=>{
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movies.director.name
+                        children: movies.Director.Name
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 23,
@@ -28452,7 +28451,7 @@ MovieView.propTypes = {
         Director: (0, _propTypesDefault.default).shape({
             Name: (0, _propTypesDefault.default).string.isRequired
         }),
-        ReleaseYear: (0, _propTypesDefault.default).string.isRequired
+        ReleaseYear: (0, _propTypesDefault.default).string
     }).isRequired,
     onBackClick: (0, _propTypesDefault.default).func.isRequired
 };
