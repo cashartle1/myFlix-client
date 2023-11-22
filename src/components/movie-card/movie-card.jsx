@@ -1,5 +1,77 @@
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
+
+export const MovieCard = ({ movie, user, token, setUser }) => {
+
+    const [favorites, setFavorites] = useState(user.FavoriteMovies)
+
+    const [isFavorite, setIsFavorite] = useState(
+        user.FavoriteMovies.includes(movie.id)
+    );
+
+    useEffect(() => {
+        if (favorites.includes(movie.id)) {
+            setIsFavorite(true);
+        }
+    }, [favorites]);
+
+    const addFavoriteMovie = () => {
+
+        fetch(
+            `https://movie-flix-f31fbb6efa26.herokuapp.com/users/${user.Username}/movies/${movie.id}`,
+            { method: "POST", headers: { Authorization: `Bearer ${token}` } }
+        )
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    alert("Failed to add favorite movie");
+                    console.log("Failed to add favorite movie");
+                }
+            })
+            .then((data) => {
+                if (data) {
+                    alert("successfully added to favorites");
+                    localStorage.setItem("user", JSON.stringify(data));
+                    setFavorites(data.FavoriteMovies)
+                    setUser(data);
+                    setIsFavorite(true);
+                    console.log("successfully added to favs");
+                }
+            })
+            .catch((err) => {
+                alert(err);
+                console.error(err);
+            });
+    };
+
+    const removeFavoriteMovie = () => {
+        fetch(
+            `https://movie-flix-f31fbb6efa26.herokuapp.com/users/${user.Username}/movies/${movie.id}`,
+            { method: "DELETE", headers: { Authorization: `Bearer ${token}` } }
+        )
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    alert("Failed");
+                }
+            })
+            .then((user) => {
+                if (user) {
+                    alert("successfully deleted from favorites");
+                    localStorage.setItem("user", JSON.stringify(user));
+                    setUser(user);
+                    setIsFavorite(false);
+                }
+            })
+            .catch((error) => {
+                alert(error);
+            });
+    };
 
 export const MovieCard = ({ movies, onMovieClick }) => {
     return (
@@ -10,6 +82,12 @@ export const MovieCard = ({ movies, onMovieClick }) => {
                 <Button onClick={() => onMovieClick(movies)} variant="link">
                     Open
                 </Button>
+            <Card.Body>
+                {!isFavorite ? (
+                    <Button className="primary" onClick={addFavoriteMovie}>+Add to Favorites</Button>
+                ) : (
+                    <Button className="secondary" onClick={removeFavoriteMovie}>Remove from Favorites</Button>
+                )}
             </Card.Body>
         </Card>
     );
