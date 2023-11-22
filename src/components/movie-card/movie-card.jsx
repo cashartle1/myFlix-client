@@ -73,15 +73,15 @@ export const MovieCard = ({ movie, user, token, setUser }) => {
             });
     };
 
-export const MovieCard = ({ movies, onMovieClick }) => {
     return (
         <Card className="h-100">
-            <Card.Img variant="top" src={movies.ImagePath} />
+            <Card.Img variant="top" src={movie.ImagePath} />
             <Card.Body>
-                <Card.Title>{movies.Title}</Card.Title>
-                <Button onClick={() => onMovieClick(movies)} variant="link">
-                    Open
-                </Button>
+                <Card.Title>{movie.Title}</Card.Title>
+                <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
+                    <Button variant="link">Open</Button>
+                </Link>
+            </Card.Body>
             <Card.Body>
                 {!isFavorite ? (
                     <Button className="primary" onClick={addFavoriteMovie}>+Add to Favorites</Button>
@@ -96,7 +96,7 @@ export const MovieCard = ({ movies, onMovieClick }) => {
 
 //define all props constraints for MovieCard
 MovieCard.propTypes = {
-    movies: PropTypes.shape({
+    movie: PropTypes.shape({
         ImagePath: PropTypes.string,
         Title: PropTypes.string.isRequired,
         Description: PropTypes.string.isRequired,
@@ -107,6 +107,6 @@ MovieCard.propTypes = {
             Name: PropTypes.string.isRequired
         }),
         ReleaseYear: PropTypes.string
-    }).isRequired,
-    onMovieClick: PropTypes.func.isRequired
+    })
+
 };
