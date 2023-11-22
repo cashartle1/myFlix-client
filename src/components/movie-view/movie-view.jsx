@@ -1,47 +1,45 @@
+import React from 'react';
+import React, { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
+import { Button, Card, Image } from "react-bootstrap";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+export const MovieView = ({ movies, user, token, setUser }) => {
+    const { movieId } = useParams();
 
-export const MovieView = ({ movies, onBackClick }) => {
     return (
-        <div>
-            <div>
-                <img className="w-100" src={movies.ImagePath} />
-            </div>
-            <div>
-                <span>Title: </span>
-                <span>{movies.Title}</span>
-            </div>
-            <div>
-                <span>Description: </span>
-                <span>{movies.Description}</span>
-            </div>
-            <div>
-                <span>Genre: </span>
-                <span>{movies.Genre.Name}</span>
-            </div>
-            <div>
-                <span>Director: </span>
-                <span>{movies.Director.Name}</span>
-            </div>
-            <div>
-                <span>Release Year: </span>
-                <span>{movies.releaseYear}</span>
-            </div>
-            <Button
-                onClick={onBackClick}
-                variant="primary"
-                style={{ cursor: "pointer" }}
-            >
-                Back
-            </Button>
-            <Button md={12}
-                onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}
-                variant="primary"
-                style={{ cursor: "pointer" }}
-            >
-                Logout
-            </Button>
-        </div>
+        <Card>
+            <Card.Body>
+                <Image className="w-100" src={movie.ImagePath} rounded />
+            </Card.Body>
+            <Card.Body>
+                <Card.Title>Title: </Card.Title>
+                <Card.Text>{movie.Title}</Card.Text>
+            </Card.Body>
+            <Card.Body>
+                <Card.Title>Description: </Card.Title>
+                <Card.Text>{movie.Description}</Card.Text>
+            </Card.Body>
+            <Card.Body>
+                <Card.Title>Genre: </Card.Title>
+                <Card.Text>{movie.Genre.Name}</Card.Text>
+            </Card.Body>
+            <Card.Body>
+                <Card.Title>Director: </Card.Title>
+                <Card.Text>{movie.Director.Name}</Card.Text>
+            </Card.Body>
+            <Card.Body>
+                <Card.Title>Release Year: </Card.Title>
+                <Card.Text>{movie.ReleaseYear}</Card.Text>
+            </Card.Body>
+            <Card.Body>
+                <Link to={`/`}>
+                    <Button className="back-button" variant='primary' style={{ cursor: "pointer" }} >Back</Button>
+                </Link>
+            </Card.Body>
+        </Card>
+
+
     );
 };
 
