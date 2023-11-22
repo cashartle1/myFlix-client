@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
@@ -7,7 +7,6 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { ProfileView } from "../profile-view/profile-view";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from 'react-bootstrap/Button';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
@@ -16,7 +15,6 @@ export const MainView = () => {
     const [user, setUser] = useState(storedUser ? storedUser : null);
     const [token, setToken] = useState(storedToken ? storedToken : null);
     const [movies, setMovies] = useState([]);
-    const [selectedMovie, setSelectedMovie] = useState(null);
 
     useEffect(() => {
         if (!token) {
@@ -30,7 +28,7 @@ export const MainView = () => {
             .then((data) => {
                 const moviesFromApi = data.map((movies) => {
                     return {
-                        id: movies.id,
+                        id: movies._id,
                         Title: movies.Title,
                         Description: movies.Description,
                         Genre: {
@@ -40,7 +38,7 @@ export const MainView = () => {
                             Name: movies.Director.Name
                         },
                         ImagePath: movies.ImagePath,
-                        releaseYear: movies.ReleaseYear
+                        ReleaseYear: movies.ReleaseYear
                     };
                 });
 
