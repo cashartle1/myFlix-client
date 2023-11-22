@@ -114,7 +114,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
 
 //define all props constraints for MovieCard
 MovieView.propTypes = {
-    movies: PropTypes.shape({
+    movie: PropTypes.shape({
         ImagePath: PropTypes.string.isRequired,
         Title: PropTypes.string.isRequired,
         Description: PropTypes.string.isRequired,
@@ -125,6 +125,5 @@ MovieView.propTypes = {
             Name: PropTypes.string.isRequired
         }),
         ReleaseYear: PropTypes.string
-    }).isRequired,
-    onBackClick: PropTypes.func.isRequired
+    })
 };
