@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
@@ -25,6 +25,7 @@ export const SignupView = () => {
                 "Content-Type": "application/json"
             }
         }).then((response) => {
+            console.log(response)
             if (response.ok) {
                 alert("Signup successful");
                 window.location.reload();
